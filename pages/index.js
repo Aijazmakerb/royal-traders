@@ -23,7 +23,6 @@ import useCart from "@/hooks/useCart";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { AddProductPalette } from "@/components/addProductPalette";
-import { Confirm } from "@/components/utils/alert";
 
 export default function Page() {
   const {

@@ -45,8 +45,8 @@ export default function ProductSection({ products, addToCart }) {
                         <div className="p-4">
                             <div className="flex justify-between items-start mb-4">
                                 <div className="flex items-center justify-between w-full">
-                                    <h3 className="font-semibold">{product.name}</h3>
-                                    <p className="text-sm text-gray-500">{product.variants.length > 1
+                                    <h3 className="font-semibold text-[14px] 2xl:text-[16px] line-clamp-1">{product.name}</h3>
+                                    <p className="2xl:text-sm text-[12px] text-gray-500">{product.variants.length > 1
                                         ? `From ₹${Math.min(...product.variants.map(v => v.price)).toFixed(2)}`
                                         : `₹${product.variants[0].price.toFixed(2)}`
                                     }</p>
