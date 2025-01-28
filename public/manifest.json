@@ -6,7 +6,7 @@
     "scope": "/",
     "start_url": "/",
     "name": "Royal Traders",
-    "short_name": "pos",
+    "short_name": "pospay",
     "description": "An app to manage the Shop",
     "icons": [
         {

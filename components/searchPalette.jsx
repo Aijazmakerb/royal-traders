@@ -71,7 +71,7 @@ export function SearchPalette({ items, onSelect }) {
                             key={`${item.id}-${item.variantName}`}
                             value={`${item.name} ${item.variantName}`}
                             onSelect={() => handleSelect(item, item.variants.find(v => v.name === item.variantName))}
-                            className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-accent hover:text-accent-foreground"
+                            className="relative flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none aria-selected:bg-accent aria-selected:text-accent-foreground data-[disabled]:opacity-50 hover:bg-accent hover:text-accent-foreground"
                         >
                             <span className="flex-1">{item.name} - {item.variantName}</span>
                             <span className="text-muted-foreground">${item.variantPrice.toFixed(2)}</span>
