@@ -1,11 +1,11 @@
-import { useState, useEffect, useMemo } from 'react'
-import { Command } from 'cmdk'
-import { Search } from 'lucide-react'
-import { DialogTitle } from '@radix-ui/react-dialog'
+import { useState, useEffect, useMemo } from 'react';
+import { Command } from 'cmdk';
+import { Search, X } from 'lucide-react';
+import { DialogTitle } from '@radix-ui/react-dialog';
 
 export function SearchPalette({ items, onSelect }) {
-    const [open, setOpen] = useState(false)
-    const [value, setValue] = useState('')
+    const [open, setOpen] = useState(false);
+    const [value, setValue] = useState('');
 
     useEffect(() => {
         const down = (e) => {
@@ -29,22 +29,22 @@ export function SearchPalette({ items, onSelect }) {
         ).filter(item =>
             item.name.toLowerCase().includes(value.toLowerCase()) ||
             item.variantName.toLowerCase().includes(value.toLowerCase())
-        );
+        ) || [];
     }, [items, value]);
 
     const handleSelect = (item, variant) => {
         const newItemId = `${item.id}-${Date.now()}`;
-        onSelect(item, variant)
-        setOpen(false)
+        onSelect(item, variant);
+        setOpen(false);
 
         // Trigger focus on quantity input
         setTimeout(() => {
-            const quantityInput = document.querySelector(`[data-item-id="${newItemId}"] .quantity-input`)
+            const quantityInput = document.querySelector(`[data-item-id="${newItemId}"] .quantity-input`);
             if (quantityInput) {
-                quantityInput.focus()
+                quantityInput.focus();
             }
-        }, 100)
-    }
+        }, 100);
+    };
 
     return (
         <>
@@ -53,6 +53,7 @@ export function SearchPalette({ items, onSelect }) {
                 onOpenChange={setOpen}
                 label="Search products"
                 className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-2xl w-full bg-white rounded-xl shadow-2xl border border-gray-200"
+                shouldFilter={false}
             >
                 <DialogTitle className="sr-only">Search products</DialogTitle>
                 <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
@@ -62,6 +63,7 @@ export function SearchPalette({ items, onSelect }) {
                         onValueChange={setValue}
                         placeholder="Search products..."
                         className="flex h-11 w-full rounded-md bg-transparent py-3 text-sm outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50"
+                        autoFocus
                     />
                 </div>
                 <Command.List className="max-h-[300px] overflow-y-auto overflow-x-hidden">
@@ -80,6 +82,5 @@ export function SearchPalette({ items, onSelect }) {
                 </Command.List>
             </Command.Dialog>
         </>
-    )
+    );
 }
-
